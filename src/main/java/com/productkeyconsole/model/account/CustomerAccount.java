@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public final class CustomerAccount extends Account {
     final ArrayList<KeyInfoHolder> listOfKeys;
 
-    CustomerAccount(String name, String email, String password, Address address) {
+    public CustomerAccount(String name, String email, String password, Address address) {
         super(name, email, password, address);
         listOfKeys = new ArrayList<>();
     }

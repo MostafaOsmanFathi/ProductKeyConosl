@@ -20,15 +20,32 @@ public class ProductKey {
         return productKeyInfo;
     }
 
-    public ProductKey(SellerAccount sellerAccount, String productOwnerEmail, String productName, String description, int price) {
+    public static ProductKey getProductKeyByName(String productName) {
+        for (ProductKey productKey : productKeys) {
+            if (productKey.getProductName().equals(productName)) {
+                return productKey;
+            }
+        }
+        return null;
+    }
+
+    public ProductKey(SellerAccount sellerAccount, String productName, String description, double price) {
         soldCount = 0;
         listOfKeys = new ArrayList<>();
         productKeyInfo = new ProductKeyInfo(productName, description);
-        this.productOwnerEmail = productOwnerEmail;
+        this.productOwnerEmail = sellerAccount.getEmail();
         this.sellerAccount = sellerAccount;
         this.price = price;
 
         productKeys.add(this);
+    }
+
+    public static ArrayList<String> getListOfKeysOfTheStore() {
+        ArrayList<String> tmp = new ArrayList<>();
+        for (ProductKey productKey : productKeys) {
+            tmp.add(productKey.getProductKeyInfo().toString());
+        }
+        return tmp;
     }
 
     public double getPrice() {

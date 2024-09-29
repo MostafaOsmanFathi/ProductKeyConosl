@@ -50,10 +50,12 @@ public abstract sealed class Account permits CustomerAccount, SellerAccount, Adm
         return this.password.equals(password);
     }
 
-    public void ChangePassword(String oldPassword, String newPassword) {
+    public boolean ChangePassword(String oldPassword, String newPassword) {
         if (checkPassword(oldPassword)) {
             this.password = newPassword;
+            return true;
         }
+        return false;
     }
 
     public void deactivateAccount() {
@@ -75,7 +77,7 @@ public abstract sealed class Account permits CustomerAccount, SellerAccount, Adm
     }
 
     public boolean deposit(double amount) {
-        if (amount<=0)return false;
+        if (amount <= 0) return false;
         this.balance += amount;
         return true;
     }

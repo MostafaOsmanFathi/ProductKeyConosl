@@ -14,6 +14,15 @@ public final class SellerAccount extends Account {
         listOfProductKeys = new ArrayList<>();
     }
 
+    public ProductKey getProductKey(String productKeyName) {
+        for (ProductKey productKey : listOfProductKeys) {
+            if (productKey.getProductName().equals(productKeyName)) {
+                return productKey;
+            }
+        }
+        return null;
+    }
+
     public boolean addProductKey(ProductKey productKey) {
         if (checkProductNameExist(productKey.getProductName()))
             return false;

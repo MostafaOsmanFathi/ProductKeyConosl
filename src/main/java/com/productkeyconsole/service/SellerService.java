@@ -15,11 +15,11 @@ public class SellerService {
         return instance;
     }
 
-    public static boolean createAndAddProductKey(@NotNull SellerAccount sellerAccount, @NotNull String productName, @NotNull String description, int price) {
+    public static boolean createAndAddProductKey(@NotNull SellerAccount sellerAccount, @NotNull String productName, @NotNull String description, double price) {
         if (!StoreIncomeService.takeAddingGameFee(sellerAccount)) {
             return false;
         }
-        ProductKey productKey = new ProductKey(sellerAccount, sellerAccount.getEmail(), productName, description, price);
+        ProductKey productKey = new ProductKey(sellerAccount, productName, description, price);
         sellerAccount.addProductKey(productKey);
         return true;
     }

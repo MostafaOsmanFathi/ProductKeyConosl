@@ -13,7 +13,7 @@ public class AccountService {
     private AccountService() {
     }
 
-    AccountService getAccountService() {
+    public static AccountService getAccountService() {
         return accountService;
     }
 
@@ -25,7 +25,7 @@ public class AccountService {
         return true;
     }
 
-    public boolean signInAccount(String email, String password) {
+    public boolean logInAccount(String email, String password) {
         Account account = getAccountByEmail(email);
         if (account == null) {
             return false;
