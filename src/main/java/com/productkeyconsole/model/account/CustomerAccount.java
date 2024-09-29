@@ -35,6 +35,14 @@ public final class CustomerAccount extends Account {
         return true;
     }
 
+    public static String[] getListOfKeysInfoForLib(CustomerAccount account) {
+        String[] res = new String[account.listOfKeys.size()];
+        for (int i = 0; i < account.listOfKeys.size(); i++) {
+            res[i] = account.listOfKeys.get(i).keyInfo().productName() + " " + account.listOfKeys.get(i).key().getProductKey(account)+" "+account.listOfKeys.get(i).key().getSoldDate();
+        }
+        return res;
+    }
+
     @Override
     public String toString() {
         if (listOfKeys.isEmpty()) {

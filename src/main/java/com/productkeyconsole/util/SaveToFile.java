@@ -1,6 +1,7 @@
 package com.productkeyconsole.util;
 
+import java.io.FileNotFoundException;
+
 public interface SaveToFile {
-    String SAVEINPATH="com/productkeyconsole/repo/";
-    void SaveInFile();
+    void SaveInFile(Object obj) throws FileNotFoundException;
 }

@@ -21,22 +21,23 @@ public class CustomerController {
         showProductOfTheStoreController();
         System.out.println("Enter Name of the Product Key");
         String Name = scanner.next();
-        CustomerService customerService = CustomerService.getCustomerService();
-
-    }
-
-    static void showMyProductController() {
+        ProductKey tmp = ProductKey.getProductKeyByName(Name);
+        if (tmp != null && CustomerService.buyProductKeyForCustomer(customerAccount, tmp)) {
+            System.out.println("buy Successfully");
+            return;
+        }
+        System.out.println("buy Process failed");
     }
 
     static void showMyKeyLiberayController(CustomerAccount account) {
-
+        makeHeaderWithRows("Show Libearry of Keys", CustomerAccount.getListOfKeysInfoForLib(account));
     }
 
     static void customerController(CustomerAccount customerAccount) {
         label:
         {
             while (logedInAccount != null) {
-                makeHeaderWithRows("Customer Account Choices\t\t\t\t\t\t" + customerAccount.getName(), "Deposit to your Account", "WithDraw to your Account", "Change Password", "Show Balance", "Account Information", "Remove My Account", "logout", "---", "Show Products:", "Select Product by Name:", "Show My Products:");
+                makeHeaderWithRows("Customer Account Choices\t\t\t\t\t\t" + customerAccount.getName(), "Deposit to your Account", "WithDraw to your Account", "Change Password", "Show Balance", "Account Information", "Remove My Account", "logout", "---", "Show Products of the store:", "Select Product by Name:", "Show My Products liberary:");
                 System.out.println("enter your choice: ");
                 int choice = scanner.nextInt();
 

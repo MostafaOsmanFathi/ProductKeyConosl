@@ -1,10 +1,14 @@
 package com.productkeyconsole.service;
 
 import com.productkeyconsole.model.account.Account;
+import com.productkeyconsole.util.LoadFromFile;
+import com.productkeyconsole.util.SaveToFile;
 
+import java.io.File;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
-public class AccountService {
+public class AccountService implements LoadFromFile, SaveToFile {
 
     private static final AccountService accountService = new AccountService();
     private static final ArrayList<Account> listOfAccounts = new ArrayList<>();
@@ -54,5 +58,14 @@ public class AccountService {
         return loggedInAccount;
     }
 
+    @Override
+    public void loadFromFile() {
+
+
+    }
+
+    @Override
+    public void SaveInFile(Object object) {
+    }
 }
 

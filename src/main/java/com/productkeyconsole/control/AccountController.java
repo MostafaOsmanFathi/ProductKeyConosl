@@ -6,6 +6,7 @@ import com.productkeyconsole.model.account.CustomerAccount;
 import com.productkeyconsole.model.account.SellerAccount;
 import com.productkeyconsole.service.AccountService;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import static com.productkeyconsole.view.ConsoleViewer.makeHeader;
@@ -51,7 +52,7 @@ public class AccountController {
     }
 
     static void showBalanceController(Account account) {
-        makeHeaderWithRows("Account Balance", "Your balance is:" + account.getBalance());
+        makeHeaderWithRows("Account Balance", "Your balance is:" + "%.2f".formatted(account.getBalance()));
     }
 
     static void ShowAccountInfoController(Account account) {
@@ -121,7 +122,7 @@ public class AccountController {
     }
 
 
-    static void login() {
+    static void login()  {
 
         label:
         {

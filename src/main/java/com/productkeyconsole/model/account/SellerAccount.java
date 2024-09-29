@@ -70,6 +70,14 @@ public final class SellerAccount extends Account {
         return false;
     }
 
+    public String[] getListOfProductKeys() {
+        String[] res = new String[listOfProductKeys.size()];
+        for (int i = 0; i < listOfProductKeys.size(); i++) {
+            res[i] = listOfProductKeys.get(i).getProductName() + " " + listOfProductKeys.get(i).getPrice();
+        }
+        return res;
+    }
+
     @Override
     public String toString() {
         return super.toString() + "\n" + listOfProductKeys;

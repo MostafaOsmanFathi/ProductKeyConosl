@@ -6,13 +6,10 @@ public class ProgramFlowController {
 
     }
 
-    static void startProgramFlow() {
+    public static void startProgramFlow() {
         AccountController.login();
     }
 
-    public static void main(String[] args) {
-        startProgramFlow();
-    }
 
 
 }

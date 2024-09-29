@@ -1,11 +1,13 @@
 package com.productkeyconsole.control;
 
 import com.productkeyconsole.model.account.SellerAccount;
+import com.productkeyconsole.model.productkey.Key;
 import com.productkeyconsole.model.productkey.ProductKey;
 import com.productkeyconsole.service.SellerService;
 
 import java.util.Scanner;
 
+import static com.productkeyconsole.view.ConsoleViewer.makeHeader;
 import static com.productkeyconsole.view.ConsoleViewer.makeHeaderWithRows;
 import static com.productkeyconsole.control.AccountController.*;
 
@@ -14,21 +16,37 @@ public class SellerController {
     private static final Scanner scanner = new Scanner(System.in);
 
     static void addProductController(SellerAccount sellerAccount) {
-        ProductKey productKey;
         System.out.println("Enter productkey Name: ");
         String productName = scanner.next();
         System.out.println("Enter productkey Description: ");
         String description = scanner.next();
         System.out.println("Enter productkey Price: ");
         double price = scanner.nextDouble();
-        SellerService.createAndAddProductKey(sellerAccount, productName, description, price);
+        if (SellerService.createAndAddProductKey(sellerAccount, productName, description, price)) {
+            makeHeader("product added successfully");
+        } else {
+            makeHeader("product adding filed");
+        }
     }
 
-    static void enterKey(ProductKey productKey) {
+    static void enterKeyMenu(SellerAccount sellerAccount, ProductKey productKey) {
+        makeHeaderWithRows("Product Key Console\t\t\t" + productKey.getProductName() + "\t\t" + productKey.getDescription() + "\t\t" + productKey.getPrice(),
+                "add New Key for curnt product:",
+                "get Product Info");
+        switch (scanner.nextInt()) {
+            case 1:
+                addKeyToProductKey(sellerAccount, productKey);
+                break;
+            case 2:
+                makeHeader(productKey.getDescription());
+                break;
+        }
 
     }
 
     static void selectProductControllerSeller(SellerAccount sellerAccount) {
+        productsSummeryController(sellerAccount);
+        makeHeader("Select Product");
         System.out.println("enter product Name:");
         String productName = scanner.next();
         ProductKey tmp = sellerAccount.getProductKey(productName);
@@ -37,29 +55,27 @@ public class SellerController {
             return;
         }
         System.out.println("Do you want to add Key for this product? (Y/N)");
-        String choice = scanner.next();
+        String choice = scanner.next().toUpperCase();
         if (choice.equalsIgnoreCase("Y")) {
-            enterKey(tmp);
+            enterKeyMenu(sellerAccount, tmp);
         }
     }
 
-    static void productsSummeryController() {
-
+    static void productsSummeryController(SellerAccount sellerAccount) {
+        makeHeaderWithRows("mostafa", sellerAccount.getListOfProductKeys());
     }
 
-    static void addKeyToProductKey() {
-
+    static void addKeyToProductKey(SellerAccount sellerAccount, ProductKey productKey) {
+        System.out.println("Enter productkey Key: ");
+        String Key = scanner.next();
+        SellerService.addKey(sellerAccount, productKey, new Key(Key));
     }
 
     static void sellerController(SellerAccount sellerAccount) {
         label:
         {
             while (logedInAccount != null) {
-                makeHeaderWithRows("Seller Account Choices \t\t\t\t\t\t" + sellerAccount.getName(), "Deposit to your Account", "WithDraw to your Account", "Change Password", "Show Balance", "Account Information", "Remove My Account", "logout", "---",
-                        "Add Product to your Account:",
-                        "Select Product:", "Products Summery:",
-                        "Show selling information:",
-                        "add Product Key:");
+                makeHeaderWithRows("Seller Account Choices \t\t\t\t\t\t" + sellerAccount.getName(), "Deposit to your Account", "WithDraw to your Account", "Change Password", "Show Balance", "Account Information", "Remove My Account", "logout", "---", "Add Product to your Account:", "Select Product:", "Products Summery:", "Show selling information:");
 
                 System.out.println("enter your choice: ");
                 int choice = scanner.nextInt();
@@ -93,10 +109,7 @@ public class SellerController {
                         selectProductControllerSeller(sellerAccount);
                         break;
                     case 10:
-                        productsSummeryController();
-                        break;
-                    case 11:
-                        addKeyToProductKey();
+                        productsSummeryController(sellerAccount);
                         break;
                     default:
                 }
