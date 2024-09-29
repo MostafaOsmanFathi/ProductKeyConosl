@@ -2,16 +2,18 @@ package com.productkeyconsole.model.account;
 
 
 import com.productkeyconsole.enumeration.AccountStatus;
+import com.productkeyconsole.util.LoadFromFile;
+import com.productkeyconsole.util.SaveToFile;
 
-public abstract sealed class Account permits CustomerAccount, SellerAccount, AdminAccount {
-    private final String email;
-    private String name;
-    private String password;
-    private double balance;
-    private final int accountNumber;
-    private static int accountCounter;
-    private AccountStatus accountStatus;
-    private Address address;
+public abstract sealed class Account implements SaveToFile, LoadFromFile permits CustomerAccount, SellerAccount, AdminAccount {
+    protected final String email;
+    protected String name;
+    protected String password;
+    protected double balance;
+    protected final int accountNumber;
+    protected static int accountCounter;
+    protected AccountStatus accountStatus;
+    protected Address address;
 
     static {
         accountCounter = 0;

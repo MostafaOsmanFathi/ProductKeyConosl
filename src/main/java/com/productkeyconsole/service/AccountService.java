@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-public class AccountService implements LoadFromFile, SaveToFile {
+public  class AccountService{
 
     private static final AccountService accountService = new AccountService();
     private static final ArrayList<Account> listOfAccounts = new ArrayList<>();
@@ -56,16 +56,6 @@ public class AccountService implements LoadFromFile, SaveToFile {
 
     public Account getLoggedInAccount() {
         return loggedInAccount;
-    }
-
-    @Override
-    public void loadFromFile() {
-
-
-    }
-
-    @Override
-    public void SaveInFile(Object object) {
     }
 }
 

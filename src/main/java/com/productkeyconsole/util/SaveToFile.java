@@ -3,5 +3,7 @@ package com.productkeyconsole.util;
 import java.io.FileNotFoundException;
 
 public interface SaveToFile {
-    void SaveInFile(Object obj) throws FileNotFoundException;
+    String FolderPath = "src/main/java/com/productkeyconsole/repo/";
+
+    void SaveInFile() throws FileNotFoundException;
 }

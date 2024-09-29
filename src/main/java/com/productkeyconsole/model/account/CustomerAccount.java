@@ -4,14 +4,26 @@ import com.productkeyconsole.model.productkey.Key;
 import com.productkeyconsole.model.productkey.KeyInfoHolder;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.*;
 import java.util.ArrayList;
 
 public final class CustomerAccount extends Account {
     final ArrayList<KeyInfoHolder> listOfKeys;
+    static final PrintWriter printWriter;
+    static final String file = SAVEINPATH + "CustomerAccounts.txt";
+
+    static {
+        try {
+            printWriter = new PrintWriter(new FileWriter(file));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public CustomerAccount(String name, String email, String password, Address address) {
         super(name, email, password, address);
         listOfKeys = new ArrayList<>();
+        SaveInFile();
     }
 
     public void removeKeyAndGetIt(@NotNull Key key) {
@@ -38,7 +50,7 @@ public final class CustomerAccount extends Account {
     public static String[] getListOfKeysInfoForLib(CustomerAccount account) {
         String[] res = new String[account.listOfKeys.size()];
         for (int i = 0; i < account.listOfKeys.size(); i++) {
-            res[i] = account.listOfKeys.get(i).keyInfo().productName() + " " + account.listOfKeys.get(i).key().getProductKey(account)+" "+account.listOfKeys.get(i).key().getSoldDate();
+            res[i] = account.listOfKeys.get(i).keyInfo().productName() + " " + account.listOfKeys.get(i).key().getProductKey(account) + " " + account.listOfKeys.get(i).key().getSoldDate();
         }
         return res;
     }
@@ -54,6 +66,17 @@ public final class CustomerAccount extends Account {
             sb.append(tmpKey.getProductKey(this)).append(" ").append(tmpKey.getCreationDate()).append(" <=> ").append(tmpKey.getExpiryDate()).append(" ").append(tmpKey.getSoldDate());
         }
         return sb.toString();
+    }
+
+    @Override
+    public void loadFromFile() {
+
+    }
+
+    @Override
+    public void SaveInFile() {
+        printWriter.println(name + " " + email + " " + password + " " + balance + address);
+        printWriter.flush();
     }
 }
 

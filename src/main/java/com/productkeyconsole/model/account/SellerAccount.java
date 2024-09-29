@@ -3,15 +3,30 @@ package com.productkeyconsole.model.account;
 import com.productkeyconsole.model.productkey.Key;
 import com.productkeyconsole.model.productkey.ProductKey;
 
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public final class SellerAccount extends Account {
 
     private final ArrayList<ProductKey> listOfProductKeys;
+    static final PrintWriter printWriter;
+    static final String file = SAVEINPATH + "SellerAccount.txt";
+
+    static {
+        try {
+            printWriter = new PrintWriter(new FileWriter(file));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public SellerAccount(String name, String email, String password, Address address) {
         super(name, email, password, address);
         listOfProductKeys = new ArrayList<>();
+        SaveInFile();
     }
 
     public ProductKey getProductKey(String productKeyName) {
@@ -81,5 +96,16 @@ public final class SellerAccount extends Account {
     @Override
     public String toString() {
         return super.toString() + "\n" + listOfProductKeys;
+    }
+
+    @Override
+    public void loadFromFile() {
+
+    }
+
+    @Override
+    public void SaveInFile() {
+        printWriter.println(name + " " + email + " " + password + " " + balance + address);
+        printWriter.flush();
     }
 }
