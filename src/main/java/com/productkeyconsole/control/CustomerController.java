@@ -1,3 +1,11 @@
+/*
+ *  Copyright (c) 2024 Mostafa Osman
+ *  All rights reserved.
+ *
+ *  This software and associated documentation files (the "Software") may not be
+ *  used, copied, modified, merged, published, distributed, or sublicensed without
+ *  explicit permission from the copyright owner.
+ */
 package com.productkeyconsole.control;
 
 import com.productkeyconsole.model.account.CustomerAccount;
@@ -8,7 +16,17 @@ import java.util.Scanner;
 
 import static com.productkeyconsole.view.ConsoleViewer.makeHeaderWithRows;
 import static com.productkeyconsole.control.AccountController.*;
-
+/**
+ * Handles customer-specific operations such as account management, order history, and product key retrieval.
+ *
+ * <p>This controller ensures customers can interact with their accounts efficiently.
+ *
+ * @see CustomerAccount
+ * @see CustomerService
+ *
+ * @version 1.0
+ * @since 2024
+ */
 public class CustomerController {
     private static final Scanner scanner = new Scanner(System.in);
 

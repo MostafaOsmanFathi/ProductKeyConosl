@@ -1,3 +1,11 @@
+/*
+ *  Copyright (c) 2024 Mostafa Osman
+ *  All rights reserved.
+ *
+ *  This software and associated documentation files (the "Software") may not be
+ *  used, copied, modified, merged, published, distributed, or sublicensed without
+ *  explicit permission from the copyright owner.
+ */
 package com.productkeyconsole.model.account;
 
 import com.productkeyconsole.model.productkey.Key;
@@ -7,7 +15,14 @@ import com.productkeyconsole.service.AccountService;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/**
+ * Represents a seller account in the system.
+ *
+ * <p>This class holds seller-specific data and provides methods for seller actions.
+ *
+ * @version 1.0
+ * @since 2024
+ */
 public final class SellerAccount extends Account {
 
     private final ArrayList<ProductKey> listOfProductKeys;

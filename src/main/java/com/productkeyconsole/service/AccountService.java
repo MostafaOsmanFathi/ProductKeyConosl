@@ -1,3 +1,11 @@
+/*
+ *  Copyright (c) 2024 Mostafa Osman
+ *  All rights reserved.
+ *
+ *  This software and associated documentation files (the "Software") may not be
+ *  used, copied, modified, merged, published, distributed, or sublicensed without
+ *  explicit permission from the copyright owner.
+ */
 package com.productkeyconsole.service;
 
 import com.productkeyconsole.model.account.Account;
@@ -11,7 +19,15 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import static com.productkeyconsole.util.SaveToFile.SAVEINPATH;
-
+/**
+ * Service layer responsible for business logic related to account operations.
+ *
+ * <p>This class interacts with controllers and repositories to provide account-related services.
+ *
+ * @see Account
+ * @version 1.0
+ * @since 2024
+ */
 public class AccountService {
 
     private static final AccountService accountService = new AccountService();

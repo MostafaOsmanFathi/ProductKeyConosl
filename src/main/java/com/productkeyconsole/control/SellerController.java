@@ -1,3 +1,11 @@
+/*
+ *  Copyright (c) 2024 Mostafa Osman
+ *  All rights reserved.
+ *
+ *  This software and associated documentation files (the "Software") may not be
+ *  used, copied, modified, merged, published, distributed, or sublicensed without
+ *  explicit permission from the copyright owner.
+ */
 package com.productkeyconsole.control;
 
 import com.productkeyconsole.model.account.SellerAccount;
@@ -11,7 +19,17 @@ import static com.productkeyconsole.view.ConsoleViewer.makeHeader;
 import static com.productkeyconsole.view.ConsoleViewer.makeHeaderWithRows;
 import static com.productkeyconsole.control.AccountController.*;
 
-
+/**
+ * Handles seller-specific operations such as product key listings and account management.
+ *
+ * <p>This controller interacts with seller accounts and manages product key sales.
+ *
+ * @see SellerAccount
+ * @see SellerService
+ *
+ * @version 1.0
+ * @since 2024
+ */
 public class SellerController {
     private static final Scanner scanner = new Scanner(System.in);
 

@@ -1,7 +1,22 @@
+/*
+ *  Copyright (c) 2024 Mostafa Osman
+ *  All rights reserved.
+ *
+ *  This software and associated documentation files (the "Software") may not be
+ *  used, copied, modified, merged, published, distributed, or sublicensed without
+ *  explicit permission from the copyright owner.
+ */
 package com.productkeyconsole.service;
 
 import com.productkeyconsole.model.account.Account;
-
+/**
+ * Service responsible for managing store income generated from product key sales.
+ *
+ * <p>This class handles calculations and record-keeping for store income.
+ *
+ * @version 1.0
+ * @since 2024
+ */
 public class StoreIncomeService {
     private final static StoreIncomeService storeIncomeService = new StoreIncomeService();
     static double storeIncome = 0.0;

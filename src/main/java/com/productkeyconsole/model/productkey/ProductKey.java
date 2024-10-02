@@ -1,3 +1,11 @@
+/*
+ *  Copyright (c) 2024 Mostafa Osman
+ *  All rights reserved.
+ *
+ *  This software and associated documentation files (the "Software") may not be
+ *  used, copied, modified, merged, published, distributed, or sublicensed without
+ *  explicit permission from the copyright owner.
+ */
 package com.productkeyconsole.model.productkey;
 
 import com.productkeyconsole.model.account.Account;
@@ -5,7 +13,14 @@ import com.productkeyconsole.model.account.SellerAccount;
 
 import java.util.ArrayList;
 import java.util.Objects;
-
+/**
+ * Represents a specific product key that is assigned to a product in the system.
+ *
+ * <p>This class contains methods to manage product keys, such as generation and validation.
+ *
+ * @version 1.0
+ * @since 2024
+ */
 public class ProductKey {
     static ArrayList<ProductKey> productKeys = new ArrayList<>();
 

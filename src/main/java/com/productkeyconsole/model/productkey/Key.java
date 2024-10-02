@@ -1,3 +1,11 @@
+/*
+ *  Copyright (c) 2024 Mostafa Osman
+ *  All rights reserved.
+ *
+ *  This software and associated documentation files (the "Software") may not be
+ *  used, copied, modified, merged, published, distributed, or sublicensed without
+ *  explicit permission from the copyright owner.
+ */
 package com.productkeyconsole.model.productkey;
 
 import com.productkeyconsole.enumeration.KeyStatus;
@@ -6,7 +14,14 @@ import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
 import java.util.Objects;
-
+/**
+ * Represents a general product key in the system.
+ *
+ * <p>This class holds key data and provides methods for key-related actions.
+ *
+ * @version 1.0
+ * @since 2024
+ */
 public class Key {
     private final String productKey;
     private KeyStatus keyStatus;

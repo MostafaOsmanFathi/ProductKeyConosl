@@ -1,3 +1,11 @@
+/*
+ *  Copyright (c) 2024 Mostafa Osman
+ *  All rights reserved.
+ *
+ *  This software and associated documentation files (the "Software") may not be
+ *  used, copied, modified, merged, published, distributed, or sublicensed without
+ *  explicit permission from the copyright owner.
+ */
 package com.productkeyconsole.control;
 
 import com.productkeyconsole.model.account.Account;
@@ -11,7 +19,18 @@ import java.util.Scanner;
 
 import static com.productkeyconsole.view.ConsoleViewer.makeHeader;
 import static com.productkeyconsole.view.ConsoleViewer.makeHeaderWithRows;
-
+/**
+ * Controls the logic related to account operations such as creating, deleting, or updating accounts.
+ *
+ * <p>This controller interacts with services and models to handle account-related actions.
+ *
+ * @see AccountService
+ * @see CustomerAccount
+ * @see SellerAccount
+ *
+ * @version 1.0
+ * @since 2024
+ */
 public class AccountController {
 
     private static final Scanner scanner = new Scanner(System.in);
@@ -122,7 +141,7 @@ public class AccountController {
     }
 
 
-    static void login()  {
+    static void login() {
 
         label:
         {

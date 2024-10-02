@@ -1,9 +1,27 @@
+/*
+ *  Copyright (c) 2024 Mostafa Osman
+ *  All rights reserved.
+ *
+ *  This software and associated documentation files (the "Software") may not be
+ *  used, copied, modified, merged, published, distributed, or sublicensed without
+ *  explicit permission from the copyright owner.
+ */
 package com.productkeyconsole.model.account;
 
 
 import com.productkeyconsole.enumeration.AccountStatus;
 import com.productkeyconsole.util.SaveToFile;
-
+/**
+ * Abstract class representing a general account in the system, which can be extended by specific types of accounts.
+ *
+ * <p>This class encapsulates the common attributes and methods for accounts.
+ *
+ * @see CustomerAccount
+ * @see SellerAccount
+ *
+ * @version 1.0
+ * @since 2024
+ */
 public abstract sealed class Account implements SaveToFile permits CustomerAccount, SellerAccount, AdminAccount {
     protected final String email;
     protected String name;

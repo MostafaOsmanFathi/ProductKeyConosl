@@ -1,3 +1,11 @@
+/*
+ *  Copyright (c) 2024 Mostafa Osman
+ *  All rights reserved.
+ *
+ *  This software and associated documentation files (the "Software") may not be
+ *  used, copied, modified, merged, published, distributed, or sublicensed without
+ *  explicit permission from the copyright owner.
+ */
 package com.productkeyconsole.service;
 
 import com.productkeyconsole.model.account.CustomerAccount;
@@ -6,7 +14,15 @@ import com.productkeyconsole.model.productkey.KeyInfoHolder;
 import com.productkeyconsole.model.productkey.ProductKey;
 import com.productkeyconsole.model.productkey.ProductKeyInfo;
 import org.jetbrains.annotations.NotNull;
-
+/**
+ * Service responsible for customer-related operations in the system.
+ *
+ * <p>This class manages customer accounts, orders, and other customer-specific tasks.
+ *
+ * @see CustomerAccount
+ * @version 1.0
+ * @since 2024
+ */
 public class CustomerService {
 
     final static CustomerService customerService = new CustomerService();
