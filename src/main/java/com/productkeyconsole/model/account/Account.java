@@ -87,6 +87,7 @@ public abstract sealed class Account implements SaveToFile, LoadFromFile permits
     public boolean withdraw(double amount) {
         if (amount <= this.balance) {
             this.balance -= amount;
+            return true;
         }
         return false;
     }

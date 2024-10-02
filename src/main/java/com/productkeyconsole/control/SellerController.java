@@ -75,7 +75,7 @@ public class SellerController {
         label:
         {
             while (logedInAccount != null) {
-                makeHeaderWithRows("Seller Account Choices \t\t\t\t\t\t" + sellerAccount.getName(), "Deposit to your Account", "WithDraw to your Account", "Change Password", "Show Balance", "Account Information", "Remove My Account", "logout", "---", "Add Product to your Account:", "Select Product:", "Products Summery:", "Show selling information:");
+                makeHeaderWithRows("Seller Account Choices \t\t\t\t\t\t" + sellerAccount.getName(), "Deposit to your Account", "WithDraw to your Account", "Change Password", "Show Balance", "Account Information", "Remove My Account", "logout", "---", "Add Product to your Account:", "Select Product:", "Products Summery:");
 
                 System.out.println("enter your choice: ");
                 int choice = scanner.nextInt();
