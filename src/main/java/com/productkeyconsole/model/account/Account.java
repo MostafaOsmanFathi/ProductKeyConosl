@@ -2,10 +2,9 @@ package com.productkeyconsole.model.account;
 
 
 import com.productkeyconsole.enumeration.AccountStatus;
-import com.productkeyconsole.util.LoadFromFile;
 import com.productkeyconsole.util.SaveToFile;
 
-public abstract sealed class Account implements SaveToFile, LoadFromFile permits CustomerAccount, SellerAccount, AdminAccount {
+public abstract sealed class Account implements SaveToFile permits CustomerAccount, SellerAccount, AdminAccount {
     protected final String email;
     protected String name;
     protected String password;
@@ -26,6 +25,17 @@ public abstract sealed class Account implements SaveToFile, LoadFromFile permits
         this.password = password;
         this.balance = 0;
         this.address = address;
+        accountStatus = AccountStatus.ACTIVE;
+        accountNumber = ++accountCounter;
+    }
+
+    public Account(String name, String email, String password, double balance, Address address) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.balance = 0;
+        this.address = address;
+        this.balance = balance;
         accountStatus = AccountStatus.ACTIVE;
         accountNumber = ++accountCounter;
     }

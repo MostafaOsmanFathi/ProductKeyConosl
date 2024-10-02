@@ -1,18 +1,24 @@
 package com.productkeyconsole.service;
 
 import com.productkeyconsole.model.account.Account;
-import com.productkeyconsole.util.LoadFromFile;
-import com.productkeyconsole.util.SaveToFile;
+import com.productkeyconsole.model.account.Address;
+import com.productkeyconsole.model.account.CustomerAccount;
+import com.productkeyconsole.model.account.SellerAccount;
 
 import java.io.File;
-import java.io.PrintWriter;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
-public  class AccountService{
+import static com.productkeyconsole.util.SaveToFile.SAVEINPATH;
+
+public class AccountService {
 
     private static final AccountService accountService = new AccountService();
     private static final ArrayList<Account> listOfAccounts = new ArrayList<>();
     private static Account loggedInAccount = null;
+    static final String SellerFile = SAVEINPATH + "SellerAccount.txt";
+    static final String CustomerFile = SAVEINPATH + "CustomerAccounts.txt";
 
     private AccountService() {
     }
@@ -52,6 +58,42 @@ public  class AccountService{
             }
         }
         return null;
+    }
+
+
+    public void loadFromFileSeller() throws FileNotFoundException {
+        Scanner sc = new Scanner(new File(SellerFile));
+        while (sc.hasNext()) {
+            String name = sc.next();
+            String email = sc.next();
+            String password = sc.next();
+            double balance = sc.nextDouble();
+            String addressStreet = sc.next();
+            String addressCity = sc.next();
+            String addressState = sc.next();
+            String addressZip = "---";
+            AccountService acc = AccountService.getAccountService();
+            Account tmp = new SellerAccount(name, email, password, balance, new Address(addressStreet, addressCity, addressState, addressZip));
+            acc.createNewAccount(tmp);
+        }
+    }
+
+    public void loadFromFileCustomer() throws FileNotFoundException {
+        Scanner sc = new Scanner(new File(CustomerFile));
+        while (sc.hasNext()) {
+
+            String name = sc.next();
+            String email = sc.next();
+            String password = sc.next();
+            double balance = sc.nextDouble();
+            String addressStreet = sc.next();
+            String addressCity = sc.next();
+            String addressState = sc.next();
+            String addressZip = "----";
+            AccountService acc = AccountService.getAccountService();
+            Account tmp = new CustomerAccount(name, email, password, balance, new Address(addressStreet, addressCity, addressState, addressZip));
+            acc.createNewAccount(tmp);
+        }
     }
 
     public Account getLoggedInAccount() {

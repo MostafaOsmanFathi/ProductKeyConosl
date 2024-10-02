@@ -8,10 +8,6 @@ final public class AdminAccount extends Account {
         super(name, email, password, address);
     }
 
-    @Override
-    public void loadFromFile() {
-
-    }
 
     @Override
     public void SaveInFile() throws FileNotFoundException {

@@ -2,12 +2,11 @@ package com.productkeyconsole.model.account;
 
 import com.productkeyconsole.model.productkey.Key;
 import com.productkeyconsole.model.productkey.ProductKey;
+import com.productkeyconsole.service.AccountService;
 
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public final class SellerAccount extends Account {
 
@@ -27,6 +26,11 @@ public final class SellerAccount extends Account {
         super(name, email, password, address);
         listOfProductKeys = new ArrayList<>();
         SaveInFile();
+    }
+
+    public SellerAccount(String name, String email, String password, double balance, Address address) {
+        super(name, email, password, balance, address);
+        listOfProductKeys = new ArrayList<>();
     }
 
     public ProductKey getProductKey(String productKeyName) {
@@ -98,14 +102,10 @@ public final class SellerAccount extends Account {
         return super.toString() + "\n" + listOfProductKeys;
     }
 
-    @Override
-    public void loadFromFile() {
-
-    }
 
     @Override
     public void SaveInFile() {
-        printWriter.println(name + " " + email + " " + password + " " + balance + address);
+        printWriter.println(name + " " + email + " " + password + " " + balance + " " + address);
         printWriter.flush();
     }
 }

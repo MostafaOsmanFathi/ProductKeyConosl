@@ -26,6 +26,12 @@ public final class CustomerAccount extends Account {
         SaveInFile();
     }
 
+    public CustomerAccount(String name, String email, String password, double balance, Address address) {
+        super(name, email, password, balance, address);
+        listOfKeys = new ArrayList<>();
+    }
+
+
     public void removeKeyAndGetIt(@NotNull Key key) {
         for (int i = 0; i < listOfKeys.size(); i++) {
             if (listOfKeys.get(i).key().getProductKey(this).equals(key.getProductKey(this))) {
@@ -68,14 +74,10 @@ public final class CustomerAccount extends Account {
         return sb.toString();
     }
 
-    @Override
-    public void loadFromFile() {
-
-    }
 
     @Override
     public void SaveInFile() {
-        printWriter.println(name + " " + email + " " + password + " " + balance + address);
+        printWriter.println(name + " " + email + " " + password + " " + balance + " " + address);
         printWriter.flush();
     }
 }
